@@ -7,12 +7,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
+  mode: 'development',
+  devtool: 'cheap-module-source-map',
   output: {
     filename: 'js/bundle.js',
     path: path.resolve(__dirname, './build')
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader'
+        ]
+      },
       {
         test: /\.css$/i,
         use: [
