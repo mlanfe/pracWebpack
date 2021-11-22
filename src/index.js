@@ -2,6 +2,7 @@ import './css/common.css'
 import './css/tst.less'
 
 import './js/component'
+import './app.jsx'
 
 import { sum, multi } from './js/math'
 

@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config wk.config.js"
+    "build": "webpack --config wk.config.js",
+    "watch": "webpack --watch --config wk.config.js",
+    "serve": "webpack serve --config wk.config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
@@ -28,5 +31,10 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.60.0",
     "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.0.2",
+    "webpack-dev-server": "^4.5.0"
   }
 }
