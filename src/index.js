@@ -1,8 +1,10 @@
-import './css/common.css'
+import '@/css/common.css'
 import './css/tst.less'
 
-import './js/component'
-import './app.jsx'
+import 'js/component'
+
+// 因为配置了reslove的extensions, 可以省略.jsx后缀名
+import './app'
 
 import { sum, multi } from './js/math'
 
