@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Link } from "react-router-dom";
@@ -6,12 +6,14 @@ import { Routes, Route, Link } from "react-router-dom";
 
 
 function Home() {
+  const [num, setnum] = useState(0)
   return (
     <div>
-      Home
+      Home{num}
     </div>
   )
 }
+
 
 function About() {
   console.log('==========About');

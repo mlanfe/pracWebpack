@@ -27,6 +27,15 @@ function createEle() {
   i1.className = 'iconfont icon-ashbin'
   divEle.appendChild(i1)
 
+  
+  const btn1 = document.createElement('button')
+  btn1.innerHTML = '点击'
+  btn1.addEventListener('click', ()=> {
+    console.log('==========');
+    div1.innerHTML = 'hello webpack !!!'
+  }, false)
+  divEle.appendChild(btn1)
+
   return divEle
 }
 
