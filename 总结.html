@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  webpack优化相关
+  1. 代码压缩
+      压缩css: cssMinimizerWebpackPlugin
+      压缩js: Terser
+      压缩html: htmlWebpackPlugin
+  2. tree shaking
+      对css的treeShaking: purgeCss
+      对js的treeShaking: Terser结合useExports或者side-effects
+  3. 代码分离: 分离css, js
+      入口分离; 动态导入; slpitChunksPlugin
+      分离css: miniCssExtractPlugin
+  4. 使用外部代码: cdn
+      shimming: 可以在每个模块中通过变量获取一个package webpack.providePlugin
+  5. DLL
+  6. Scope Hoisting
+  7. http压缩
+  8. inlineChunkPlugin
+  9. webpack对libaray的打包
+
+  miniCssExtractPlugin
+    1. 当只使用了miniCssExtractPlugin时, 只打包出一个css文件
+    2. 当结合动态导入css文件时 动态导入的生成了单独的css文件, 
+       并且原来应该插入style标签的css样式也被抽成了单独的css文件
+    3.
+</html>

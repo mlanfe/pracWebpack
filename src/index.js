@@ -1,5 +1,5 @@
 import '@/css/common.css'
-import './css/tst.less'
+import ('./css/tst.less')
 
 import ('js/component')
 
