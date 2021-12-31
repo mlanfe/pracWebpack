@@ -22,7 +22,9 @@ const commonConfig = (isProduction) => {
     entry: './src/index.js',
     devtool: 'cheap-module-source-map',
     output: {
-      filename: 'js/bundle.js',
+      // filename: 'js/bundle.js',
+      filename: 'js/[name].[chunkhash:6].bundle.js',
+      chunkFilename: 'js/[name].[contenthash:6].chunk.js',
       path: getPath('./build')
       // html中src实际的引用路径是: 域名 + publicPath + html中src的取值
       // publicPath是对于打包后文件的index.html而言, 设置的是index.html中资源的引用路径
@@ -43,6 +45,40 @@ const commonConfig = (isProduction) => {
         'css': getPath('./src/css'),
       },
       extensions: ['.js', '.json', '.jsx'],
+    },
+    optimization: {
+      // //不需要额外设置, 生产环境下默认值就是deterministicminimize: true,
+      // 开发环境下默认值是named
+      chunkIds: 'deterministic', 
+      runtimeChunk: 'single',
+      // splitChunks也可以只配置在生产环境中
+      splitChunks: {
+        // chunks如果设置成async, 缓存组也会默认只单独打包同步导入的代码
+        // 默认值: async
+        chunks: "all",
+        minChunks: 1,
+        minSize: 2000,
+        // 缓存组可以继承和/或覆盖来自 splitChunks.* 的任何选项
+        // 所以cacheGroups外面的其他选项, 会影响cacheGroups的表现
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            filename: "js/[id]_vendors.js",
+            // name: "vendor-chunks.js",
+            priority: -10
+          },
+          // bar: {
+          //   test: /bar_/,
+          //   filename: "[id]_bar.js"
+          // }
+          default: {
+            minChunks: 2,
+            filename: "common_[id].js",
+            priority: -20
+          }
+        }
+      }
+  
     },
     module: {
       rules: [

@@ -1,1 +1,0 @@
-{"version":3,"file":"css/349.608bf7.css","mappings":"AAKA;AACA;AACA;AAJA","sources":["webpack://pracwebpack/./src/css/tst.less"],"sourcesContent":["\n\n@fontSize: 50px;\n@fontWeight: 700;\n\n.content {\n  font-size: @fontSize !important;\n  font-weight: @fontWeight !important;\n}\n"],"names":[],"sourceRoot":""}

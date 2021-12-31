@@ -9,27 +9,46 @@
 <body>
   
   webpack优化相关
-  1. 代码压缩
-      压缩css: cssMinimizerWebpackPlugin
-      压缩js: Terser
-      压缩html: htmlWebpackPlugin
-  2. tree shaking
-      对css的treeShaking: purgeCss
-      对js的treeShaking: Terser结合useExports或者side-effects
-  3. 代码分离: 分离css, js
-      入口分离; 动态导入; slpitChunksPlugin
+  1. 代码分离: 分离css, js
+      入口分离; 动态导入; slpitChunksPlugin(开发和生产环境都可以配置, 大部分选项使用默认配置, 也可以自定义个别配置项)
       分离css: miniCssExtractPlugin
+  2. 代码压缩丑化
+      压缩css: cssMinimizerWebpackPlugin
+      压缩js: Terser(开发和生产环境都可以配置, 大部分选项使用默认配置, 也可以自定义个别配置项)
+      压缩html: htmlWebpackPlugin
+  3. tree shaking
+      对css的treeShaking: purgeCss
+      对js的treeShaking: Terser结合useExports(通常使用默认配置: true)或者side-effects
   4. 使用外部代码: cdn
-      shimming: 可以在每个模块中通过变量获取一个package webpack.providePlugin
+      shimming: 可以在每个模块中通过变量获取一个package。 webpack.providePlugin
   5. DLL
   6. Scope Hoisting
   7. http压缩
   8. inlineChunkPlugin
   9. webpack对libaray的打包
 
-  miniCssExtractPlugin
+
+  其他:
+  1. 应该优先进行代码分离（不同环境对于不同文件是否都需要分离? css在开发环境中是没有必要分离的）;
+     再考虑对分离的代码进行压缩和tree shaking是没有必要的；
+     在不进行额外配置的情况下webpack也会进行一些代码的压缩、分离、tree shaking
+  2. css: 在开发环境: 对css的抽离、压缩、tree shaking是没有必要的；
+     js: 可以分别对不同环境配置js的抽离和压缩, 对于tree shaking: 使用useExports的默认配置即可
+         开发环境中, js的抽离、压缩、tree shaking使用webpack的默认配置一般也足够了
+  3. miniCssExtractPlugin
     1. 当只使用了miniCssExtractPlugin时, 只打包出一个css文件
     2. 当结合动态导入css文件时 动态导入的生成了单独的css文件, 
        并且原来应该插入style标签的css样式也被抽成了单独的css文件
-    3.
+
+  ??: 
+    1. 那些配置是必要? 那些是默认配置的, 不需要主动配置?
+    2. js的分离应该只需要配置在生产环境中? 是否是默认配置就有?
+
+  代办: 
+    看一下splitchunks里具体有哪些选项及含义
+    minimizer相关: css、js、html的代码丑化
+
+
+    
+
 </html>
