@@ -1,15 +1,46 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 
 module.exports = {
   mode: 'production',
   // 只有设置为delelopment, 才能让production模式下的默认配置不生效
   // mode: 'development', 
+  // 代码的丑化和压缩
   optimization: {
-    // minimize: true,
+    minimize: true,
     minimizer: [
       new TerserPlugin({
         extractComments: false,
+        parallel: true,
+        terserOptions: {
+          compress: {
+            arguments: false,
+            dead_code: true,
+          },
+          mangle: true,
+          toplevel: true,
+          keep_classnames: true,
+          keep_fnames: true,
+        },
+      }),
+      new CssMinimizerPlugin({
+        parallel: true,
+      }),
+      new HtmlMinimizerPlugin({
+        minimizerOptions: {
+          removeComments: false, // 是否要移除注释
+          removeRedundantAttributes: false, // 是否移除多余的属性
+          removeEmptyAttributes: true, // 是否移除一些空属性
+          collapseWhitespace: false,
+          minifyCSS: true,
+          minifyJS: {
+            mangle: {
+              toplevel: true
+            }
+          }
+        },
       }),
     ],
 
@@ -24,3 +55,4 @@ module.exports = {
     })
   ],
 }
+

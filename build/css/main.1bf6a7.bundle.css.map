@@ -1,0 +1,1 @@
+{"version":3,"file":"css/main.1bf6a7.bundle.css","mappings":"AACA","sources":["webpack://pracwebpack/./src/css/tst.css"],"sourcesContent":["\n.content {\n  /* 十六进制通常是写几位 */\n  color: #12345678;\n}\n\n:fullscreen {\n  background-color: gray;\n}\n\n.content {\n  user-select: none;\n  transition: all 2s ease;\n}\n\n\n\n\n\n"],"names":[],"sourceRoot":""}

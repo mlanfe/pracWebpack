@@ -145,7 +145,12 @@ const commonConfig = (isProduction) => {
       }),
       new HtmlWebpackPlugin({
         title: "hello webpack",
-        template: "./public/index.html"
+        template: "./public/index.html",
+        cache: true, // 当文件没有发生任何改变时, 直接使用之前的缓存
+        // html丑化, 也可以在HtmlMinimizerPlugin中进行配置
+        minify: {
+          // removeComments: false, // 是否要移除注释
+        }
       }),
       new CopyPlugin({
         patterns: [

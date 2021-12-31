@@ -10,15 +10,19 @@
   
   webpack优化相关
   1. 代码分离: 分离css, js
-      入口分离; 动态导入; slpitChunksPlugin(开发和生产环境都可以配置, 大部分选项使用默认配置, 也可以自定义个别配置项)
+      入口分离; 动态导入; slpitChunksPlugin(开发和生产环境都可以配置,一般使用默认配置, 也可以自定义个别配置项)
       分离css: miniCssExtractPlugin
   2. 代码压缩丑化
       压缩css: cssMinimizerWebpackPlugin
-      压缩js: Terser(开发和生产环境都可以配置, 大部分选项使用默认配置, 也可以自定义个别配置项)
-      压缩html: htmlWebpackPlugin
+      压缩js: Terser(开发和生产环境都可以配置, 一般使用默认配置, 也可以自定义个别配置项)
+      压缩html: 使用htmlWebpackPlugin或者htmlMinimizerWebpackPlugin
+                htmlWebpackPlugin和htmlMinimizerWebpackPlugin对html的压缩都是依赖htmlMinifierTerser,
+                htmlWebpackPlugin的minify配置项和htmlMinimizerWebpackPlugin的minimizerOptions配置项其实都是在配置htmlMinifierTerser
+                所以, html的丑化相关配置既可以在htmlWebpackPlugin中, 也可以在htmlMinimizerWebpackPlugin中
+                为了代码更好的阅读性, 代码丑化相关的代码都放在optimization.minimizer属性中配置
   3. tree shaking
       对css的treeShaking: purgeCss
-      对js的treeShaking: Terser结合useExports(通常使用默认配置: true)或者side-effects
+      对js的treeShaking: Terser结合useExports(使用默认配置即可, 默认值true)或者side-effects
   4. 使用外部代码: cdn
       shimming: 可以在每个模块中通过变量获取一个package。 webpack.providePlugin
   5. DLL
