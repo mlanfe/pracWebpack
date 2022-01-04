@@ -1,4 +1,6 @@
 import img from '../img/11.jpg'
+import $ from 'jquery';
+
 
 function createEle() {
   const divEle = document.createElement('div')
@@ -36,8 +38,11 @@ function createEle() {
   }, false)
   divEle.appendChild(btn1)
 
+  $('#app').addClass('tst-externals')
+
   return divEle
 }
 
+const aaa = 'bar'
 const divEle = createEle()
 document.body.appendChild(divEle)

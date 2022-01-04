@@ -23,5 +23,15 @@
     <div id="app"></div>
     <div id="root"></div>1232323
     <!-- built files will be auto injected -->
+    <!-- ejs模板语法 -->
+    <%if(process.env.NODE_ENV === 'production' ){%>
+      <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+      <script
+        src="https://code.jquery.com/jquery-3.1.0.js"
+        integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+        crossorigin="anonymous"
+      ></script>
+    <%}%>
   </body>
 </html>

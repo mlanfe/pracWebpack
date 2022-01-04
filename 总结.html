@@ -25,8 +25,10 @@
       对js的treeShaking: Terser结合useExports(使用默认配置即可, 默认值true)或者side-effects
   4. 使用外部代码: cdn
       shimming: 可以在每个模块中通过变量获取一个package。 webpack.providePlugin
+      
   5. DLL
   6. Scope Hoisting
+  
   7. http压缩
   8. inlineChunkPlugin
   9. webpack对libaray的打包
@@ -39,20 +41,12 @@
   2. css: 在开发环境: 对css的抽离、压缩、tree shaking是没有必要的；
      js: 可以分别对不同环境配置js的抽离和压缩, 对于tree shaking: 使用useExports的默认配置即可
          开发环境中, js的抽离、压缩、tree shaking使用webpack的默认配置一般也足够了
+     html: 一般不需要额外配置
   3. miniCssExtractPlugin
     1. 当只使用了miniCssExtractPlugin时, 只打包出一个css文件
     2. 当结合动态导入css文件时 动态导入的生成了单独的css文件, 
        并且原来应该插入style标签的css样式也被抽成了单独的css文件
 
-  ??: 
-    1. 那些配置是必要? 那些是默认配置的, 不需要主动配置?
-    2. js的分离应该只需要配置在生产环境中? 是否是默认配置就有?
 
-  代办: 
-    看一下splitchunks里具体有哪些选项及含义
-    minimizer相关: css、js、html的代码丑化
-
-
-    
 
 </html>

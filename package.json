@@ -31,6 +31,7 @@
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.0",
     "postcss-preset-env": "^6.7.0",
+    "purgecss-webpack-plugin": "^4.1.3",
     "react-refresh": "^0.11.0",
     "regenerator-runtime": "^0.13.9",
     "style-loader": "^3.3.1",
@@ -39,6 +40,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "dayjs": "^1.10.7",
+    "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.2",

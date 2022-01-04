@@ -7,7 +7,7 @@ module.exports = {
     hot: true,
     port: 8888,
     // host: '0.0.0.0',
-    open: true,
+    // open: true,
     compress: true,
     historyApiFallback: true,
     // historyApiFallback: {

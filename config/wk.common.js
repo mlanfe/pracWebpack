@@ -1,5 +1,5 @@
 const path = require('path')
-const { DefinePlugin } = require('webpack')
+const { DefinePlugin, ProvidePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,6 +24,7 @@ const commonConfig = (isProduction) => {
     output: {
       // filename: 'js/bundle.js',
       filename: 'js/[name].[chunkhash:6].bundle.js',
+      // 也可以通过魔法字符串修改具体某个chunk的名字
       chunkFilename: 'js/[name].[contenthash:6].chunk.js',
       path: getPath('./build')
       // html中src实际的引用路径是: 域名 + publicPath + html中src的取值
@@ -33,11 +34,12 @@ const commonConfig = (isProduction) => {
       // publicPath : 'https://cdn.example.com/assets/'
       // publicPath : '/abc' //historyApiFallback也要配置对应的值
     },
-    // performance: {
-    //   // hints: false,
-    //   maxEntrypointSize: 512000,
-    //   maxAssetSize: 512000
-    // },
+    performance: {
+      // hints: false,
+      // 隐藏第一次加载文件时总体文件大小或者单个文件超过推荐size的警告warning
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
+    },
     resolve: {
       alias: {
         '@': getPath( './src'),
@@ -57,7 +59,7 @@ const commonConfig = (isProduction) => {
         // 默认值: async
         chunks: "all",
         minChunks: 1,
-        minSize: 2000,
+        minSize: 20000,
         // 缓存组可以继承和/或覆盖来自 splitChunks.* 的任何选项
         // 所以cacheGroups外面的其他选项, 会影响cacheGroups的表现
         cacheGroups: {
@@ -166,8 +168,11 @@ const commonConfig = (isProduction) => {
         ]
       }),
       new ReactRefreshWebpackPlugin(),
+      new ProvidePlugin({
+        lodashTst: 'lodash',
+      }),
     ],
-  
+   
   }
 }
 
