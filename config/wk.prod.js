@@ -3,8 +3,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const glob = require('glob')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
+const CompressionPlugin = require("compression-webpack-plugin");
 
 function getPath(relativePath) {
   return path.resolve(process.cwd(), relativePath)
@@ -27,6 +29,9 @@ module.exports = {
     // 生产环境下默认为true, 配合TerserPlugin实现js的tree shaking
     usedExports: true,
     minimize: true,
+    // 生产环境默认开启, 开发环境默认关闭
+    // 函数作用域变少，减小了内存开销, 提高代码运行速度
+    // concatenateModules: true,
     minimizer: [
       new TerserPlugin({
         extractComments: false,
@@ -63,6 +68,7 @@ module.exports = {
 
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       // 影响单独抽出的所有css文件的文件名和文件路径(包括动态导入导致单独生成的css文件)
       // 机制类似于 output.filename
@@ -73,6 +79,14 @@ module.exports = {
     new PurgecssPlugin({
       paths: glob.sync(`${getPath('./src')}/**/*`, { nodir: true }),
       safelist: ['body', 'html']
+    }),
+    new CompressionPlugin({
+      test: /\.(css|js)$/i,
+      threshold: 0,
+      minRatio: 0.8,
+      algorithm: "gzip",
+      // exclude
+      // include
     }),
   ],
 }

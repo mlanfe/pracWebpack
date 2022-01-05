@@ -24,14 +24,18 @@
       对css的treeShaking: purgeCss
       对js的treeShaking: Terser结合useExports(使用默认配置即可, 默认值true)或者side-effects
   4. 使用外部代码: cdn
-      shimming: 可以在每个模块中通过变量获取一个package。 webpack.providePlugin
-      
-  5. DLL
-  6. Scope Hoisting
+
+  5. Scope Hoisting: optimization.concatenateModules
+  6. shimming: 可以在每个模块中通过变量获取一个package。 webpack.providePlugin
   
-  7. http压缩
+  7. http压缩 CompressionWebpackPlugin 
   8. inlineChunkPlugin
-  9. webpack对libaray的打包
+  9. DLL
+  10. webpack对libaray的打包(对库打包使用rollup比较多)
+
+  shimming: 用垫隙片填入
+  concatenate: 连接，连结，使连锁
+  hoist:吊起，提升
 
 
   其他:

@@ -1,6 +1,5 @@
 const path = require('path')
 const { DefinePlugin, ProvidePlugin } = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
@@ -141,7 +140,6 @@ const commonConfig = (isProduction) => {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new DefinePlugin({
         BASE_URL: '"./"'
       }),
