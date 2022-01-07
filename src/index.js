@@ -32,3 +32,4 @@ console.log('hello webpack');
 // 但是该值无法在项目外的babel.config.js中获取
 console.log('definePlugin定义的全局变量: process.env.NODE_ENV:', process.env.NODE_ENV);
 console.log('definePlugin定义的全局变量: BASE_URL:', BASE_URL);
+
