@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Link } from "react-router-dom";
+import style from './css/test3.module.css'
 
 
 
@@ -35,6 +36,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <hr />
+      <div className={style.fs}>测试css module</div>
     </div>
   )
 }
