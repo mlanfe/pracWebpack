@@ -26,11 +26,11 @@
   4. 使用外部代码: cdn
 
   5. Scope Hoisting: optimization.concatenateModules
-  6. shimming: 可以在每个模块中通过变量获取一个package。 webpack.providePlugin
+  6. shimming: 可以在每个模块中通过变量获取一个package. webpack.providePlugin
   
   7. http压缩 CompressionWebpackPlugin 
-  8. inlineChunkPlugin (代办)
-  9. DLL (代办)
+  8. inlineChunkPlugin (待办)
+  9. DLL (待办)
   10. webpack对libaray的打包(对库打包使用rollup比较多)
 
   shimming: 用垫隙片填入
@@ -40,7 +40,7 @@
 
   其他:
   1. 应该优先进行代码分离（不同环境对于不同文件是否都需要分离? css在开发环境中是没有必要分离的）;
-     再考虑对分离的代码进行压缩和tree shaking是没有必要的；
+     再考虑对分离的代码进行压缩和tree shaking是否有必要；
      在不进行额外配置的情况下webpack也会进行一些代码的压缩、分离、tree shaking
   2. css: 在开发环境: 对css的抽离、压缩、tree shaking是没有必要的；
      js: 可以分别对不同环境配置js的抽离和压缩, 对于tree shaking: 使用useExports的默认配置即可

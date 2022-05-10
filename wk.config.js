@@ -1,6 +1,6 @@
 const path = require('path')
 const { DefinePlugin } = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -10,6 +10,8 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'cheap-module-source-map',
   output: {
+    // 取代CleanWebpackPlugin
+    clean: true,
     filename: 'js/bundle.js',
     path: path.resolve(__dirname, './build'),
     // html中src实际的引用路径是: 域名 + publicPath + html中src的取值
@@ -124,7 +126,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new DefinePlugin({
       BASE_URL: '"./"'
     }),
